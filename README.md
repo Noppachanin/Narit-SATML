@@ -3,7 +3,7 @@
   <br>
   <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://www.narit.or.th/_next/image?url=https%3A%2F%2Fweb-cms-service.narit.or.th%2Fassets%2F60b990f7-e977-4976-83c7-35820a3b826c&w=2048&q=75" alt="Markdownify" width="200"></a>
   <br>
-  Markdownify
+  Satellite ML
   <br>
 </h1>
 

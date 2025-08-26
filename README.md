@@ -9,7 +9,7 @@
 
 <!-- <h4 align="center">A minimal Markdown Editor desktop app built on top of <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4> -->
 
-
+<!--
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
@@ -19,7 +19,7 @@
   <a href="#license">License</a>
 </p>
 
-<!-- ![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif) -->
+ ![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif) 
 
 ## Key Features
 
@@ -100,7 +100,10 @@ If you like this project and think it has helped in any way, consider buying me 
 
 ## License
 
+
 MIT
+
+
 
 ---
 
@@ -108,3 +111,4 @@ MIT
 > GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
 > Twitter [@amit_merchant](https://twitter.com/amit_merchant)
 
+-->

@@ -23,6 +23,8 @@
 
 * SpaceTrack retrieval
   - Instantly download TLE records from publicly availble dataset [SpaceTrack](https://www.space-track.org/auth/login).
+* Model training 
+  - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
 * Pretrained models for inference 
   - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
 <!-- * GitHub Flavored Markdown  

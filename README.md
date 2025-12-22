@@ -24,9 +24,11 @@
 * SpaceTrack retrieval
   - Instantly download TLE records from publicly availble dataset [SpaceTrack](https://www.space-track.org/auth/login).
 * Model training 
-  - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
+  - Provide python notebooks for training classical ML, LSTM, and ARIMA models for TLE estimation.  
 * Pretrained models for inference 
-  - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
+  - Estimate future TLE using RandomForest model pretrained on TLE of ISS, a LEO satellite.
+* Prediction Pipeline for Satellite data retrieved from SpaceTrack
+  - 
 <!-- * GitHub Flavored Markdown  
 * Syntax highlighting
 * [KaTeX](https://khan.github.io/KaTeX/) Support

@@ -24,9 +24,17 @@
 * SpaceTrack retrieval
   - Instantly download TLE records from publicly availble dataset [SpaceTrack](https://www.space-track.org/auth/login).
 * Model training 
-  - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
+  - Provide python notebooks for training classical ML, LSTM, and ARIMA models for TLE estimation.  
 * Pretrained models for inference 
-  - Provide RandomForest model pretrained on TLE of ISS, a LEO satellite.  
+  - Estimate future TLE using RandomForest model pretrained on TLE of ISS, a LEO satellite.
+* Prediction pipeline for Satellite data retrieved from SpaceTrack
+  - Estimate future TLE using training pipeline for each TLE feature of a satellite
+ 
+### For inference 
+We suggest to follow the codes in **Inference_ClassicalML** and **Inference_pretrainedLSTM**
+
+### For trainable models
+We suggest to follow the codes in the directory **Model_training**
 <!-- * GitHub Flavored Markdown  
 * Syntax highlighting
 * [KaTeX](https://khan.github.io/KaTeX/) Support
@@ -54,6 +62,19 @@ $ git clone https://github.com/Noppachanin/Narit-SATML
 $ pip install -r requirements.txt
 
 ```
+
+## Regression result : Mean Absolute Error
+**Bold texts** are the feature that each model have lower error than Simple Moving Average(SMA)
+|                     Feature                     | SMA (Baseline) | Ridge Regression |     ARIMA    |     LSTM     |
+|:-----------------------------------------------:|:-------------:|:----------------:|:------------:|:------------:|
+| First Derivative Mean Motion                    |    3.34E-04   |   **2.73E-04**   | **2.35E-04** | **2.45E-04** |
+| Inclination (degrees)                           |    7.64E-04   |   **5.88E-04**   |   1.21E-03   |   1.39E-03   |
+| Right Ascension of the Ascending Node (degrees) |    3.98E+01   |   **6.18E+00**   | **3.84E+00** |   1.34E+02   |
+| Argument of Perigee (degrees)                   |    3.97E+01   |   **1.81E+01**   |   1.26E+02   |   1.20E+02   |
+| Mean Anomaly (degrees)                          |    4.29E+01   |   **3.75E+01**   |   5.40E+01   |   5.67E+01   |
+| Eccentricity                                    |    5.80E-05   |   **2.80E-05**   |   1.46E-04   |   1.40E-04   |
+| Mean Motion (revolutions per day)               |    2.78E-03   |   **9.43E-04**   |   3.22E-01   |   4.82E-03   |
+| Revolution Number at Epoch                      |    1.46E+00   |     1.26E+01     | **1.18E+00** |   4.84E+01   |
 <!--
 > **Note**
 > If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.

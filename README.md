@@ -63,6 +63,23 @@ $ pip install -r requirements.txt
 
 ```
 
+### Notebook scripts
+
+* Inference_ClassicalML
+  We provide the sample dataset including 9 LEO, 7 GEO, 9 MEO, and 9 SSO satellites for model training and testing using timeseries data.
+  The data was retrieved from SpaceTrack.org. The final output are two-line format of prediction and ground truth TLE which can be further used
+  for Lat-Long positioning in Apply_SkyField.ipynb.
+
+* Inference_pretraiendLSTM
+  This is the prototype version of deep learning approch. We provide the pretrained LSTM on single satellite.
+  
+
+* Apply_SkyField
+  After predicting future TLE, this code take two-line text data, and convert it to Lat, Long, Elevation, and Cartesian position(X,Y,Z).
+  We also provide error analysis using absolute difference.
+
+
+
 ## Regression result : Mean Absolute Error
 **Bold texts** are the feature that each model have lower error than Simple Moving Average(SMA)
 |                     Feature                     | SMA (Baseline) | Ridge Regression |     ARIMA    |     LSTM     |

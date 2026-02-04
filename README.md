@@ -1,13 +1,13 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://www.narit.or.th/_next/image?url=https%3A%2F%2Fweb-cms-service.narit.or.th%2Fassets%2F60b990f7-e977-4976-83c7-35820a3b826c&w=2048&q=75" alt="Markdownify" width="200"></a>
+  <a href="https://www.narit.or.th"><img src="https://www.narit.or.th/_next/image?url=https%3A%2F%2Fweb-cms-service.narit.or.th%2Fassets%2F60b990f7-e977-4976-83c7-35820a3b826c&w=2048&q=75" alt="NARIT" width="200"></a>
   <br>
   Satellite ML
   <br>
 </h1>
 
-<h4 align="center">A simple tool for two-line element (TLE) estimation.</h4>
+<h4 align="center">A machine learning toolkit for predicting satellite Two-Line Element (TLE) orbital data.</h4>
 
 <!--<a href="http://electron.atom.io" target="_blank">Electron</a> -->
 <p align="center">
@@ -21,20 +21,25 @@
 
 ## Key Features
 
-* SpaceTrack retrieval
-  - Instantly download TLE records from publicly availble dataset [SpaceTrack](https://www.space-track.org/auth/login).
-* Model training 
-  - Provide python notebooks for training classical ML, LSTM, and ARIMA models for TLE estimation.  
-* Pretrained models for inference 
-  - Estimate future TLE using RandomForest model pretrained on TLE of ISS, a LEO satellite.
-* Prediction pipeline for Satellite data retrieved from SpaceTrack
-  - Estimate future TLE using training pipeline for each TLE feature of a satellite
- 
-### For inference 
-We suggest to follow the codes in **Inference_ClassicalML** and **Inference_pretrainedLSTM**
+* **SpaceTrack Data Retrieval**
+  - Download historical TLE records from [SpaceTrack](https://www.space-track.org/auth/login), a publicly available satellite tracking database.
 
-### For trainable models
-We suggest to follow the codes in the directory **Model_training**
+* **Model Training Pipelines**
+  - Train and evaluate multiple ML approaches including Classical ML (Ridge Regression, Random Forest), LSTM neural networks, and ARIMA time-series models for TLE prediction.
+
+* **Pretrained Models for Quick Inference**
+  - Use ready-to-go Random Forest and LSTM models pretrained on ISS (International Space Station) TLE data for immediate predictions without training.
+
+* **End-to-End Prediction Pipeline**
+  - Predict future orbital parameters for any satellite by training models on each TLE feature (inclination, eccentricity, mean motion, etc.).
+ 
+### Quick Start: Inference with Pretrained Models
+If you want to make predictions using our pretrained models, follow the notebooks:
+- `Inference_ClassicalML.ipynb` — Uses pretrained Random Forest models
+- `Inference_pretrainedLSTM.ipynb` — Uses pretrained LSTM neural network
+
+### Training Your Own Models
+To train models on your own satellite data, explore the notebooks in the `Model_training/` directory.
 <!-- * GitHub Flavored Markdown  
 * Syntax highlighting
 * [KaTeX](https://khan.github.io/KaTeX/) Support
@@ -51,37 +56,36 @@ We suggest to follow the codes in the directory **Model_training**
 
 ## How To Use
 
-<!-- To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line: -->
-We suggest to create a new environment, and run the following command:
+### Installation
+
+We recommend creating a new Python environment to avoid dependency conflicts:
 
 ```bash
 # Clone this repository
 $ git clone https://github.com/Noppachanin/Narit-SATML
+$ cd Narit-SATML
 
-# Install requirement.txt
+# (Optional) Create and activate a virtual environment
+$ python -m venv venv
+$ source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 $ pip install -r requirements.txt
-
 ```
 
-### Notebook scripts
+### Notebook Descriptions
 
-* Inference_ClassicalML
-  We provide the sample dataset including 9 LEO, 7 GEO, 9 MEO, and 9 SSO satellites for model training and testing using timeseries data.
-  The data was retrieved from SpaceTrack.org. The final output are two-line format of prediction and ground truth TLE which can be further used
-  for Lat-Long positioning in Apply_SkyField.ipynb.
-
-* Inference_pretraiendLSTM
-  This is the prototype version of deep learning approch. We provide the pretrained LSTM on single satellite.
-  
-
-* Apply_SkyField
-  After predicting future TLE, this code take two-line text data, and convert it to Lat, Long, Elevation, and Cartesian position(X,Y,Z).
-  We also provide error analysis using absolute difference.
+| Notebook | Description |
+|----------|-------------|
+| **Inference_ClassicalML.ipynb** | Predict TLE using pretrained Random Forest models. Includes a sample dataset of 34 satellites (9 LEO, 7 GEO, 9 MEO, 9 SSO) retrieved from SpaceTrack.org. Outputs predicted and ground-truth TLE in standard two-line format. |
+| **Inference_pretrainedLSTM.ipynb** | Prototype deep learning approach using a pretrained LSTM model trained on a single satellite's historical TLE data. |
+| **Apply_SkyField.ipynb** | Converts predicted TLE data into geographic coordinates (Latitude, Longitude, Elevation) and Cartesian positions (X, Y, Z) using the [Skyfield](https://rhodesmill.org/skyfield/) library. Also provides error analysis comparing predictions to ground truth. |
 
 
 
-## Regression result : Mean Absolute Error
-**Bold texts** are the feature that each model have lower error than Simple Moving Average(SMA)
+## Benchmark Results
+
+The table below compares Mean Absolute Error (MAE) across different models for each TLE orbital parameter. **Bold values** indicate where the model outperforms the Simple Moving Average (SMA) baseline.
 |                     Feature                     | SMA (Baseline) | Ridge Regression |     ARIMA    |     LSTM     |
 |:-----------------------------------------------:|:-------------:|:----------------:|:------------:|:------------:|
 | First Derivative Mean Motion                    |    3.34E-04   |   **2.73E-04**   | **2.35E-04** | **2.45E-04** |
